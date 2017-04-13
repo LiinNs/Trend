@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <context id="Mysql" targetRuntime="MyBatis3Simple" defaultModelType="flat">
+        <property name="javaFileEncoding" value="UTF-8"/>
+        <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
+            <property name="mappers" value="tk.mybatis.mapper.common.Mapper,tk.mybatis.mapper.common.MySqlMapper"/>
+            <!-- caseSensitive默认false，当数据库表名区分大小写时，可以将该属性设置为true -->
+            <property name="caseSensitive" value="true"/>
+        </plugin>
+
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/trend"
+                        userId="root"
+                        password="admin">
+        </jdbcConnection>
+
+        <javaModelGenerator targetPackage="xyz.liinns.entity" targetProject="src/main/java"/>
+        <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources"/>
+        <javaClientGenerator targetPackage="xyz.liinns.mapper" targetProject="src/main/java"
+                             type="XMLMAPPER"/>
+
+        <!--<jdbcConnection driverClass="com.mysql.jdbc.Driver"-->
+                        <!--connectionURL="jdbc:mysql://rm-uf6e3308v0u0og2eto.mysql.rds.aliyuncs.com:3306/link_db"-->
+                        <!--userId="qybx_dev"-->
+                        <!--password="dev@123456">-->
+        <!--</jdbcConnection>-->
+
+        <!--<javaModelGenerator targetPackage="com.qy.insurance.cloud.dao.entity.link" targetProject="src/main/java"/>-->
+        <!--<sqlMapGenerator targetPackage="mapper.link.basic" targetProject="src/main/resources"/>-->
+        <!--<javaClientGenerator targetPackage="com.qy.insurance.cloud.dao.mapper.link.basic" targetProject="src/main/java"-->
+                             <!--type="XMLMAPPER"/>-->
+
+        <!--<table tableName="t_sys_property_resource" />-->
+        <!--<table tableName="t_transaction_apply" domainObjectName="AdjusterTransactionApply">-->
+        <!--<generatedKey column="ID" sqlStatement="MySql" identity="true" />-->
+        <!--<ignoreColumn column="modify_time" />-->
+        <!--<columnOverride column="status"-->
+        <!--javaType="com.qy.insurance.adjuster.common.constant.AdjustStatus"-->
+        <!--jdbcType="TINYINT"-->
+        <!--typeHandler="org.apache.ibatis.type.EnumOrdinalTypeHandler"/>-->
+        <!--</table>-->
+
+        <!--  ===============tables in insurance_common=============== -->
+        <!--<table tableName="t_drug_base_code">-->
+            <!--<columnOverride column="drug_base_index" property="id"/>-->
+        <!--</table>-->
+        <!--<table tableName="t_drug_in_list">-->
+            <!--<columnOverride column="in_index" property="id"/>-->
+        <!--</table>-->
+        <!--<table tableName="t_drug_out_list">-->
+            <!--<columnOverride column="out_index" property="id"/>-->
+        <!--</table>-->
+        <!--<table tableName="t_icd10_list">-->
+        <!--</table>-->
+        <!--<table tableName="t_service_base_code">-->
+            <!--<columnOverride column="service_base_index" property="id"/>-->
+        <!--</table>-->
+        <!--<table tableName="t_service_in_list">-->
+            <!--<columnOverride column="in_index" property="id"/>-->
+        <!--</table>-->
+        <!--<table tableName="t_service_out_list">-->
+            <!--<columnOverride column="out_index" property="id"/>-->
+        <!--</table>-->
+        <table tableName="user">
+            <generatedKey column="id" sqlStatement="MySql" identity="true" />
+            <ignoreColumn column="create_time"/>
+            <ignoreColumn column="modify_time"/>
+        </table>
+        <!--  ===============tables in insurance_link_dev=============== -->
+        <!--<table tableName="t_base_item_class">-->
+        <!--</table>-->
+        <!--<table tableName="t_bill">-->
+            <!--<generatedKey column="bill_id" sqlStatement="MySql" identity="true" />-->
+            <!--<columnOverride column="bill_id" property="id"/>-->
+            <!--<ignoreColumn column="modify_time"/>-->
+        <!--</table>-->
+        <!--<table tableName="t_bill_detail">-->
+            <!--<columnOverride column="detail_id" property="id"/>-->
+            <!--<ignoreColumn column="modify_time"/>-->
+        <!--</table>-->
+        <!--<table tableName="t_client_business">-->
+            <!--<columnOverride column="client_id" property="id"/>-->
+            <!--<ignoreColumn column="modify_time"/>-->
+        <!--</table>-->
+        <!--<table tableName="t_client_category">-->
+            <!--<columnOverride column="client_category_index" property="id"/>-->
+        <!--</table>-->
+        <!--<table tableName="t_daily_batch">-->
+            <!--<columnOverride column="batch_index" property="id"/>-->
+            <!--<ignoreColumn column="modify_time"/>-->
+        <!--</table>-->
+        <!--<table tableName="t_daily_bill">-->
+            <!--<generatedKey column="bill_id" sqlStatement="MySql" identity="true"/>-->
+            <!--<columnOverride column="bill_id" property="id"/>-->
+            <!--<ignoreColumn column="modify_time"/>-->
+        <!--</table>-->
+        <!--<table tableName="t_daily_bill_detail">-->
+            <!--<columnOverride column="detail_id" property="id"/>-->
+            <!--<ignoreColumn column="modify_time"/>-->
+        <!--</table>-->
+        <!--<table tableName="t_daily_diagnosis_info">-->
+            <!--<columnOverride column="diagnosis_Info_id" property="id"/>-->
+            <!--<ignoreColumn column="modify_time"/>-->
+        <!--</table>-->
+        <!--<table tableName="t_diagnosis_info">-->
+            <!--<columnOverride column="diagnosis_Info_id" property="id"/>-->
+            <!--<ignoreColumn column="modify_time"/>-->
+        <!--</table>-->
+        <!--<table tableName="t_errorcode">-->
+            <!--<columnOverride column="errorcode_id" property="id"/>-->
+        <!--</table>-->
+        <!--<table tableName="t_hos_item_class">-->
+            <!--<columnOverride column="base_index" property="id"/>-->
+        <!--</table>-->
+        <!--<table tableName="t_hoscode_match">-->
+            <!--<ignoreColumn column="modify_time"/>-->
+        <!--</table>-->
+        <!--<table tableName="t_hospital">-->
+            <!--<columnOverride column="hospital_id" property="id"/>-->
+            <!--<ignoreColumn column="modify_time"/>-->
+            <!--<ignoreColumn column="create_time"/>-->
+            <!--<ignoreColumn column="modify_user"/>-->
+        <!--</table>-->
+        <!--<table tableName="t_hospital_dept_code">-->
+            <!--<columnOverride column="hospital_dept_code_id" property="id"/>-->
+        <!--</table>-->
+        <!--<table tableName="t_item_class_trans">-->
+            <!--<columnOverride column="diagnosis_Info_id" property="id"/>-->
+        <!--</table>-->
+        <!--<table tableName="t_origin_request">-->
+            <!--<columnOverride column="origin_request_index" property="id"/>-->
+        <!--</table>-->
+        <!--<table tableName="t_patient_info">-->
+            <!--<columnOverride column="patient_index" property="id"/>-->
+        <!--</table>-->
+        <!--<table tableName="t_push_record">-->
+            <!--<columnOverride column="base_index" property="id"/>-->
+        <!--</table>-->
+        <!--<table tableName="t_query_request">-->
+            <!--<columnOverride column="query_request_index" property="id"/>-->
+            <!--<columnOverride column="patient_name" javaType="java.lang.String"/>-->
+            <!--<columnOverride column="recognition_no" javaType="java.lang.String"/>-->
+        <!--</table>-->
+        <!--<table tableName="t_retry_list">-->
+            <!--<columnOverride column="retry_index" property="id"/>-->
+            <!--<columnOverride column="retry_message" jdbcType="BLOB"/>-->
+        <!--</table>-->
+        <!--<table tableName="t_trans_info">-->
+            <!--<columnOverride column="trans_index" property="id"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="t_sys_property_resource"></table>-->
+
+        <!--<table tableName="t_request_count">-->
+            <!--<ignoreColumn column="modify_time"/>-->
+        <!--</table>-->
+    </context>
+</generatorConfiguration>

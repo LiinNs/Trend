@@ -13,4 +13,9 @@ hs_err_pid*
 .idea/
 *.iml
 facade_of_stream/target/
-sniffer/
+trendLog/
+log/
+*.lck
+tmlog26.log
+*.epoch
+*.log

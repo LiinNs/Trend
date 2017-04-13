@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.transaction.annotation.Transactional;
 import xyz.liinns.entity.User;
 
 /**
@@ -21,10 +22,14 @@ public class UserMapperTest {
     private UserMapper userMapper;
 
     @Test
+    @Transactional
     @Rollback
     public void findByName() throws Exception {
-        userMapper.insert("AAA", 20);
-        User u = userMapper.findByName("AAA");
+        User u = new User();
+        u.setAge(20);
+        u.setName("AA");
+        userMapper.insert(u);
+        userMapper.selectOne(u);
         Assert.assertEquals(20, u.getAge().intValue());
     }
 
