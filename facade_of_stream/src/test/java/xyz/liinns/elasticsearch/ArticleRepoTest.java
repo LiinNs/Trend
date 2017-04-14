@@ -1,15 +1,8 @@
 package xyz.liinns.elasticsearch;
 
-import org.elasticsearch.index.query.QueryStringQueryBuilder;
-import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import xyz.liinns.entity.Article;
-
-import java.util.Date;
-import java.util.Iterator;
 
 /**
  * Description:
@@ -19,18 +12,18 @@ import java.util.Iterator;
 @SpringBootTest
 public class ArticleRepoTest {
 
-    @Autowired
+    /*@Autowired
     private ArticleRepo articleRepo;
 
     @Test
     public void testSaveArticleIndex(){
         Article article =new Article();
         article.setId(1L);
-        article.setTitle("springboot integreate elasticsearch");
-        article.setAbstracts("springboot integreate elasticsearch is very easy");
+        article.setTitle("springboot integrate elasticsearch");
+        article.setAbstracts("springboot integrate elasticsearch is very easy");
         article.setContent("elasticsearch based on lucene,"
                 + "spring-data-elastichsearch based on elaticsearch"
-                + ",this tutorial tell you how to integrete springboot with spring-data-elasticsearch");
+                + ",this tutorial tell you how to integrate springboot with spring-data-elasticsearch");
         article.setPostTime(new Date());
         article.setClickCount(1L);
         articleRepo.save(article);
@@ -45,6 +38,6 @@ public class ArticleRepoTest {
         while(iterator.hasNext()){
             System.out.println(iterator.next());
         }
-    }
+    }*/
 
 }

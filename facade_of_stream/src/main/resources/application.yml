@@ -1,4 +1,6 @@
 spring:
+  profiles:
+    active: dev
   # Application
   application:
     name: @project.artifactId@
@@ -35,16 +37,21 @@ spring:
         log-base-dir: trendLog/jtalog/
         log-base-name: atomikos-transaction
   # Elasticsearch
-  data:
-    elasticsearch:
-      cluster-name: elasticsearch
-      cluster-nodes: 192.168.20.15:9300
-      properties:
-        path:
-          logs: trendLog/elasticsearch/log/
-          data: trendLog/elasticsearch/data/
+  #data:
+  #  elasticsearch:
+  #    cluster-name: elasticsearch
+  #    cluster-nodes: 192.168.20.15:9300
+  #    properties:
+  #      path:
+  #        logs: trendLog/elasticsearch/log/
+  #        data: trendLog/elasticsearch/data/
+# Logging
 logging:
   path: trendLog/
   level:
     xyz.liinns: DEBUG
     root: INFO
+# Flyway flyway.[url,user,password]
+# read more... http://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#howto-use-a-higher-level-database-migration-tool
+flyway:
+  locations: migration, migration/${spring.profiles.active}

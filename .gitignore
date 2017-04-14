@@ -19,3 +19,4 @@ log/
 tmlog26.log
 *.epoch
 *.log
+data/
