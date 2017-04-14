@@ -1,13 +1,14 @@
 package xyz.liinns.config;
 
+import com.alibaba.druid.pool.xa.DruidXADataSource;
 import com.atomikos.jdbc.AtomikosDataSourceBean;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.type.TypeHandlerRegistry;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceBuilder;
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -20,26 +21,36 @@ import javax.sql.XADataSource;
 /**
  * Created by LiinNs on 2017-4-13-0013.
  */
+@Slf4j
 @Configuration
 public class MybatisConfig {
 
     public static final String NAME = "trend";
-
-    @Value("${spring.datasource.type}")
-    private String dsType;
+    @Value("${spring.datasource.driver-class-name}")
+    private String className;
+    @Value("${spring.datasource.url}")
+    private String url;
+    @Value("${spring.datasource.username}")
+    private String username;
+    @Value("${spring.datasource.password}")
+    private String password;
 
     @Primary
     @Bean(name = NAME + "DataSource")
-    @ConfigurationProperties(prefix = "${spring.datasource}")
-    @SuppressWarnings("unchecked")
     public DataSource trendDataSource() throws ClassNotFoundException {
+        log.info("------------------------------- DataSource -------------------------------");
         return DataSourceBuilder.create()
-                .type((Class<? extends DataSource>) Class.forName(dsType))
+                .driverClassName(className)
+                .url(url)
+                .username(username)
+                .password(password)
+                .type(DruidXADataSource.class)
                 .build();
     }
 
     @Bean
     public AtomikosDataSourceBean trendAtomikosDataSourceBean() throws ClassNotFoundException {
+        log.info("------------------------------- AtomikosDataSourceBean -------------------------------");
         AtomikosDataSourceBean atomikosDataSourceBean = new AtomikosDataSourceBean();
         atomikosDataSourceBean.setUniqueResourceName("trendAtomikosDataSource");
         atomikosDataSourceBean.setXaDataSource((XADataSource) trendDataSource());
@@ -48,6 +59,7 @@ public class MybatisConfig {
 
     @Bean(name = NAME + "SqlSessionFactory")
     public SqlSessionFactory trendSqlSessionFactoryBean() throws Exception {
+        log.info("------------------------------- SqlSessionFactory -------------------------------");
         SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
         bean.setDataSource(trendAtomikosDataSourceBean());
         bean.setTypeAliasesPackage(MapperScannerConfig.MAPPER_BASE_PACKAGE);
@@ -67,6 +79,7 @@ public class MybatisConfig {
 
     @Bean(name = NAME + "sqlSessionTemplate")
     public SqlSessionTemplate sqlSessionTemplate() throws Exception {
+        log.info("------------------------------- SqlSessionTemplate -------------------------------");
         return new SqlSessionTemplate(trendSqlSessionFactoryBean());
     }
 }

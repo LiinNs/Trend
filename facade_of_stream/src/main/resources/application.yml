@@ -27,14 +27,14 @@ spring:
   # JTA
   jta:
     enabled: true
-    log-dir: trendLog/jtalog/
+    log-dir: ./trendLog/jtalog
     atomikos:
       datasource:
         default-isolation-level: READ COMMITTED
       properties:
         console-log-level: DEBUG
-        output-dir: trendLog/jtalog/
-        log-base-dir: trendLog/jtalog/
+        output-dir: ./trendLog/jtalog
+        log-base-dir: ./trendLog/jtalog/
         log-base-name: atomikos-transaction
   # Elasticsearch
   data:
@@ -43,15 +43,15 @@ spring:
       #cluster-nodes: localhost:9300
       properties:
         path:
-          logs: trendLog/elasticsearch/log/
-          data: data/
+          logs: ./trendLog/elasticsearch/log/
+          data: ./data
 # Logging
 logging:
-  path: trendLog/
+  path: ./trendLog
   level:
     xyz.liinns: DEBUG
     root: INFO
 # Flyway flyway.[url,user,password]
 # read more... http://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#howto-use-a-higher-level-database-migration-tool
 flyway:
-  locations: migration, migration/${spring.profiles.active}
+  locations: migration, ${spring.profiles.active}/migration

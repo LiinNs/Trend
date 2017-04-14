@@ -1,13 +1,25 @@
---
-CREATE TABLE `article`(
+SET NAMES utf8;
+SET FOREIGN_KEY_CHECKS = 0;
+
+DROP TABLE  IF  EXISTS `trend`.`article`;
+CREATE TABLE `trend`.`article`(
   `id` BIGINT (15) NOT NULL AUTO_INCREMENT COMMENT 'id',
   `title` VARCHAR (50) NOT NULL COMMENT 'title',
-  `abstracts` VARCHAR (50) NOT NULL COMMENT 'abstracts',
+  `abstracts` VARCHAR (50) NULL COMMENT 'abstracts',
   `content` VARCHAR (500) NOT NULL COMMENT 'content',
-  `post_time` DATETIME NOT NULL COMMENT 'postTime',
-  `click_count` BIGINT (15) NOT NULL COMMENT 'clickCount',
+  `post_time` DATETIME NULL COMMENT 'postTime',
+  `click_count` BIGINT (15) NULL COMMENT 'clickCount',
   PRIMARY KEY (`id`)
-)ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT '`article`';
+)ENGINE=InnoDB AUTO_INCREMENT=1  DEFAULT CHARSET=utf8 COMMENT '`article`';
 
-TRUNCATE TABLE `trend`.`user`;
-INSERT `trend`.`user` (id, name, age) VALUES (1,"测试", 27);
+
+DROP TABLE  IF  EXISTS `trend`.`user`;
+CREATE TABLE `trend`.`user`(
+  `id` BIGINT (15) NOT NULL AUTO_INCREMENT COMMENT 'id',
+  `name` VARCHAR (50) NOT NULL COMMENT 'name',
+  `age` TINYINT (4) NULL COMMENT 'age',
+  PRIMARY KEY (`id`)
+)ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT '`user`';
+
+
+SET FOREIGN_KEY_CHECKS = 1;

@@ -1,5 +1,6 @@
 package xyz.liinns.config;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import tk.mybatis.mapper.common.Mapper;
@@ -13,6 +14,7 @@ import java.util.Properties;
  * Created by LiinNs on 2017-4-13-0013.
  */
 @Configuration
+@Slf4j
 public class MapperScannerConfig {
 
     public static final String MAPPER_BASE_PACKAGE = "xyz.liinns.mapper";
@@ -20,6 +22,7 @@ public class MapperScannerConfig {
 
     @Bean
     public MapperScannerConfigurer trendMapperScannerConfigurer() {
+        log.info("------------------------------- MapperScannerConfigurer -------------------------------");
         MapperScannerConfigurer mapperScannerConfigurer = getMapperScannerConfigurer();
         mapperScannerConfigurer.setSqlSessionFactoryBeanName(MybatisConfig.NAME + "SqlSessionFactory");
         mapperScannerConfigurer.setBasePackage(MAPPER_BASE_PACKAGE);

@@ -1,8 +1,15 @@
 package xyz.liinns.elasticsearch;
 
+import org.elasticsearch.index.query.QueryStringQueryBuilder;
+import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import xyz.liinns.entity.Article;
+
+import java.util.Date;
+import java.util.Iterator;
 
 /**
  * Description:
@@ -12,12 +19,12 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @SpringBootTest
 public class ArticleRepoTest {
 
-    /*@Autowired
+    @Autowired
     private ArticleRepo articleRepo;
 
     @Test
-    public void testSaveArticleIndex(){
-        Article article =new Article();
+    public void testSaveArticleIndex() {
+        Article article = new Article();
         article.setId(1L);
         article.setTitle("springboot integrate elasticsearch");
         article.setAbstracts("springboot integrate elasticsearch is very easy");
@@ -30,14 +37,14 @@ public class ArticleRepoTest {
     }
 
     @Test
-    public void testSearch(){
-        String queryString="springboot";//搜索关键字
-        QueryStringQueryBuilder builder=new QueryStringQueryBuilder(queryString);
+    public void testSearch() {
+        String queryString = "springboot";//搜索关键字
+        QueryStringQueryBuilder builder = new QueryStringQueryBuilder(queryString);
         Iterable<Article> searchResult = articleRepo.search(builder);
         Iterator<Article> iterator = searchResult.iterator();
-        while(iterator.hasNext()){
+        while (iterator.hasNext()) {
             System.out.println(iterator.next());
         }
-    }*/
+    }
 
 }

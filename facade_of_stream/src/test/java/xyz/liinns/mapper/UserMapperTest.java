@@ -27,7 +27,7 @@ public class UserMapperTest {
     public void findByName() throws Exception {
         User u = new User();
         u.setAge(20);
-        u.setName("AA");
+        u.setName("我是小强");
         userMapper.insert(u);
         userMapper.selectOne(u);
         Assert.assertEquals(20, u.getAge().intValue());
