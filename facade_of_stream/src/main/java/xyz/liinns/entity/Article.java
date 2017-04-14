@@ -1,5 +1,11 @@
 package xyz.liinns.entity;
 
+import lombok.Data;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.elasticsearch.annotations.*;
+
+import java.util.Date;
+
 /**
  * document
  * String indexName();//索引库的名称，个人建议以项目的名称命名
@@ -22,21 +28,21 @@ package xyz.liinns.entity;
  * Description:
  * Created by LiinNs on 2017-4-14 0014.
  */
-/*@Data
+@Data
 @Document(indexName="article_index",type="article",shards=5,replicas=1,indexStoreType="fs",refreshInterval="-1")
 public class Article {
 
     @Id
     private Long id;
-    *//**标题*//*
+    /**标题*/
     private String title;
-    *//**摘要*//*
+    /**摘要*/
     private String abstracts;
-    *//**内容*//*
+    /**内容*/
     private String content;
-    *//**发表时间*//*
+    /**发表时间*/
     @Field(format= DateFormat.date_time,index= FieldIndex.no,store=true,type= FieldType.Object)
     private Date postTime;
-    *//**点击率*//*
+    /**点击率*/
     private Long clickCount;
-}*/
+}

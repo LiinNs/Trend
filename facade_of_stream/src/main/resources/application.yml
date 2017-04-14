@@ -37,14 +37,14 @@ spring:
         log-base-dir: trendLog/jtalog/
         log-base-name: atomikos-transaction
   # Elasticsearch
-  #data:
-  #  elasticsearch:
-  #    cluster-name: elasticsearch
-  #    cluster-nodes: 192.168.20.15:9300
-  #    properties:
-  #      path:
-  #        logs: trendLog/elasticsearch/log/
-  #        data: trendLog/elasticsearch/data/
+  data:
+    elasticsearch:
+      #cluster-name: elasticsearch
+      #cluster-nodes: localhost:9300
+      properties:
+        path:
+          logs: trendLog/elasticsearch/log/
+          data: data/
 # Logging
 logging:
   path: trendLog/

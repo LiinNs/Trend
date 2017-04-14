@@ -16,7 +16,7 @@ import java.util.Arrays;
 public class Application /*implements CommandLineRunner */{
 
     public static void main(String[] args) {
-        new SpringApplicationBuilder(Application.class).web(true).run(args).close();
+        new SpringApplicationBuilder(Application.class).web(true).run(args);
     }
 
     @Bean
