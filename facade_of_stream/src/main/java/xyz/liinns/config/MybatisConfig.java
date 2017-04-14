@@ -10,6 +10,7 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceBuilder;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.DependsOn;
 import org.springframework.context.annotation.Primary;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.core.io.support.ResourcePatternResolver;
@@ -38,7 +39,8 @@ public class MybatisConfig {
                 .build();
     }
 
-    @Bean
+    @Bean(initMethod = "init", destroyMethod = "close")
+    @DependsOn("trendDataSource")
     public AtomikosDataSourceBean trendAtomikosDataSourceBean() throws ClassNotFoundException {
         AtomikosDataSourceBean atomikosDataSourceBean = new AtomikosDataSourceBean();
         atomikosDataSourceBean.setUniqueResourceName("trendAtomikosDataSource");
