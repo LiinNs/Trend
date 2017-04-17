@@ -9,4 +9,13 @@
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="age" jdbcType="INTEGER" property="age" />
   </resultMap>
+
+  <select id="findByName" resultType="xyz.liinns.entity.User" parameterType="string">
+    SELECT * FROM user
+    <where>
+      <if test="name != null">
+        name = #{name}
+      </if>
+    </where>
+  </select>
 </mapper>

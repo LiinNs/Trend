@@ -28,7 +28,7 @@ public class FlywayConfig {
     @DependsOn("trendDataSource")
     public FlywayMigrationStrategy flywayMigrationStrategy() {
         return flyway -> {
-            log.info("-------------------------- flyway --------------------------");
+            log.info("\n-------------------------- flyway --------------------------");
             flyway.setDataSource(trendDataSource);
             flyway.setSchemas("trend");
             flyway.setLocations(locations);

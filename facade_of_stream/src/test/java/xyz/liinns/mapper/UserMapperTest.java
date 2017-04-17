@@ -29,7 +29,9 @@ public class UserMapperTest {
         u.setAge(20);
         u.setName("我是小强");
         userMapper.insert(u);
-        userMapper.selectOne(u);
+        userMapper.findByName("我是小强");
+        // 测试缓存
+        u = userMapper.findByName("我是小强");
         Assert.assertEquals(20, u.getAge().intValue());
     }
 

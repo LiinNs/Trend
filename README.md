@@ -5,4 +5,6 @@ TODO  list
 2. ~~Elasticsearch~~  
 3. ~~flyway~~
 4. redis 
-5. 再搞点什么？
+5. ~~thymeleaf~~
+6. ~~caffeine cache~~
+7. 再搞点什么？

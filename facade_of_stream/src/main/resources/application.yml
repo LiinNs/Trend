@@ -45,6 +45,14 @@ spring:
         path:
           logs: ./trendLog/elasticsearch/log/
           data: ./data
+  # Mail
+  #mail:
+  #  default-encoding: UTF-8
+  #  host: smtp.quyiyuan.com
+  #  username: insurance@quyiyuan.com
+  #  password: Abcd@1234
+  # Thymeleaf
+  #thymeleaf:
 # Logging
 logging:
   path: ./trendLog
@@ -55,3 +63,5 @@ logging:
 # read more... http://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#howto-use-a-higher-level-database-migration-tool
 flyway:
   locations: migration, ${spring.profiles.active}/migration
+server:
+  port: 8080

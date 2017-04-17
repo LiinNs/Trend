@@ -22,7 +22,7 @@ public class MapperScannerConfig {
 
     @Bean
     public MapperScannerConfigurer trendMapperScannerConfigurer() {
-        log.info("------------------------------- MapperScannerConfigurer -------------------------------");
+        log.info("\n------------------------------- MapperScannerConfigurer -------------------------------");
         MapperScannerConfigurer mapperScannerConfigurer = getMapperScannerConfigurer();
         mapperScannerConfigurer.setSqlSessionFactoryBeanName(MybatisConfig.NAME + "SqlSessionFactory");
         mapperScannerConfigurer.setBasePackage(MAPPER_BASE_PACKAGE);

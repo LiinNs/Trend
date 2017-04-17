@@ -18,7 +18,7 @@ public class JtaConfig {
 
     @Bean(destroyMethod = "close", initMethod = "init")
     public UserTransactionManager userTransactionManager() {
-        log.info("------------------------------- UserTransactionManager -------------------------------");
+        log.info("\n------------------------------- UserTransactionManager -------------------------------");
         UserTransactionManager userTransactionManager = new UserTransactionManager();
         userTransactionManager.setForceShutdown(false);
         return userTransactionManager;
@@ -26,13 +26,13 @@ public class JtaConfig {
 
     @Bean
     public UserTransactionImp userTransactionImp(){
-        log.info("------------------------------- UserTransactionImp -------------------------------");
+        log.info("\n------------------------------- UserTransactionImp -------------------------------");
         return new UserTransactionImp();
     }
 
     @Bean
     public JtaTransactionManager transactionManager() {
-        log.info("------------------------------- JtaTransactionManager -------------------------------");
+        log.info("\n------------------------------- JtaTransactionManager -------------------------------");
         JtaTransactionManager jtaTransactionManager = new JtaTransactionManager();
         jtaTransactionManager.setTransactionManager(userTransactionManager());
         jtaTransactionManager.setUserTransaction(userTransactionImp());

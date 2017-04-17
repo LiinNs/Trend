@@ -38,7 +38,7 @@ public class MybatisConfig {
     @Primary
     @Bean(name = NAME + "DataSource")
     public DataSource trendDataSource() throws ClassNotFoundException {
-        log.info("------------------------------- DataSource -------------------------------");
+        log.info("\n------------------------------- DataSource -------------------------------");
         return DataSourceBuilder.create()
                 .driverClassName(className)
                 .url(url)
@@ -50,7 +50,7 @@ public class MybatisConfig {
 
     @Bean
     public AtomikosDataSourceBean trendAtomikosDataSourceBean() throws ClassNotFoundException {
-        log.info("------------------------------- AtomikosDataSourceBean -------------------------------");
+        log.info("\n------------------------------- AtomikosDataSourceBean -------------------------------");
         AtomikosDataSourceBean atomikosDataSourceBean = new AtomikosDataSourceBean();
         atomikosDataSourceBean.setUniqueResourceName("trendAtomikosDataSource");
         atomikosDataSourceBean.setXaDataSource((XADataSource) trendDataSource());
@@ -59,7 +59,7 @@ public class MybatisConfig {
 
     @Bean(name = NAME + "SqlSessionFactory")
     public SqlSessionFactory trendSqlSessionFactoryBean() throws Exception {
-        log.info("------------------------------- SqlSessionFactory -------------------------------");
+        log.info("\n------------------------------- SqlSessionFactory -------------------------------");
         SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
         bean.setDataSource(trendAtomikosDataSourceBean());
         bean.setTypeAliasesPackage(MapperScannerConfig.MAPPER_BASE_PACKAGE);
@@ -79,7 +79,7 @@ public class MybatisConfig {
 
     @Bean(name = NAME + "sqlSessionTemplate")
     public SqlSessionTemplate sqlSessionTemplate() throws Exception {
-        log.info("------------------------------- SqlSessionTemplate -------------------------------");
+        log.info("\n------------------------------- SqlSessionTemplate -------------------------------");
         return new SqlSessionTemplate(trendSqlSessionFactoryBean());
     }
 }
