@@ -3,7 +3,7 @@
 不要把世界让给你看不上的人。 最终战役。 
 
 TODO  list
-1. 爬虫  
+1. 爬虫  webMagic
 2. ~~Elasticsearch~~  
 3. ~~flyway~~
 4. redis 
