@@ -3,6 +3,7 @@ package xyz.liinns.processor;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.Spider;
+import us.codecraft.webmagic.pipeline.JsonFilePipeline;
 import us.codecraft.webmagic.processor.PageProcessor;
 
 /**
@@ -10,7 +11,10 @@ import us.codecraft.webmagic.processor.PageProcessor;
  */
 public class GithubRepoProcessor implements PageProcessor {
 
-    private Site site = Site.me().setRetryTimes(3).setSleepTime(100);
+    private Site site = Site.me()
+            .setCharset("UTF-8")
+            .setRetryTimes(3)
+            .setSleepTime(100);
 
     @Override
     public void process(Page page) {
@@ -30,6 +34,10 @@ public class GithubRepoProcessor implements PageProcessor {
     }
 
     public static void main(String[] args) {
-        Spider.create(new GithubRepoProcessor()).addUrl("https://github.com/code4craft").thread(5).run();
+        Spider.create(new GithubRepoProcessor())
+                .addUrl("https://github.com/code4craft")
+                .addPipeline(new JsonFilePipeline("./"))
+                .thread(5)
+                .run();
     }
 }

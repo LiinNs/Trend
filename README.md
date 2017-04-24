@@ -9,6 +9,7 @@ TODO  list
 4. redis 
 5. ~~thymeleaf~~
 6. ~~caffeine cache~~
+7. 调度器 调用爬虫
 7. 再搞点什么？
 
 Further Improvement  
