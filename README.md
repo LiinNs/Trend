@@ -2,6 +2,13 @@
 
 不要把世界让给你看不上的人。 最终战役。 
 
+HashSet set = new HashSet<>(list);// 利用HashSet过滤重复项
+list.clear();
+list.addAll(set);
+
+Date.from()
+Date.to()
+
 TODO  list
 1. 爬虫  webMagic or scrapy 抓取java vue 媒体内容
 2. ~~Elasticsearch~~  

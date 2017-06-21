@@ -31,7 +31,7 @@ public class DateUtil {
         long counts;
         counts = localDateTwo.until(localDateOne, chronoUnit);
         if (log.isDebugEnabled()) {
-            log.debug("\n日期{}和日期{}的{}差为{}",localDateOne, localDateTwo, chronoUnit, Math.abs(counts));
+            log.debug("\n日期{}和日期{}的{}差为{}",localDateOne, localDateTwo, chronoUnit, counts);
         }
         return counts;
     }
