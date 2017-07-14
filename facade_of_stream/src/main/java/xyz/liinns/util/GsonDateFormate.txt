@@ -1,0 +1,124 @@
+@see https://stackoverflow.com/questions/15563155/gson-to-json-conversion-with-two-dateformat
+
+ONE:
+new GsonBuilder().registerTypeAdapter(Date.class, new DateDeserializer());
+
+private static final String[] DATE_FORMATS = new String[] {
+        "MMM dd, yyyy HH:mm:ss",
+        "MMM dd, yyyy"
+};
+
+
+private class DateDeserializer implements JsonDeserializer<Date> {
+
+    @Override
+    public Date deserialize(JsonElement jsonElement, Type typeOF,
+            JsonDeserializationContext context) throws JsonParseException {
+        for (String format : DATE_FORMATS) {
+            try {
+                return new SimpleDateFormat(format, Locale.US).parse(jsonElement.getAsString());
+            } catch (ParseException e) {
+            }
+        }
+        throw new JsonParseException("Unparseable date: \"" + jsonElement.getAsString()
+                + "\". Supported formats: " + Arrays.toString(DATE_FORMATS));
+    }
+}
+
+
+TWO:
+public class DateDeserializer<T extends Date> implements JsonDeserializer<T> {
+
+    private static final String TAG = DateDeserializer.class.getSimpleName();
+
+    private final SimpleDateFormat mSimpleDateFormat;
+    private final Class<T> mClazz;
+
+    public DateDeserializer(SimpleDateFormat simpleDateFormat, Class<T> clazz) {
+        mSimpleDateFormat = simpleDateFormat;
+        mClazz = clazz;
+    }
+
+    @Override
+    public T deserialize(JsonElement element, Type arg1, JsonDeserializationContext context) throws JsonParseException {
+        String dateString = element.getAsString();
+        try {
+            T date = mClazz.newInstance();
+            date.setTime(mSimpleDateFormat.parse(dateString).getTime());
+            return date;
+        } catch (InstantiationException e) {
+            throw new JsonParseException(e.getMessage(), e);
+        } catch (IllegalAccessException e) {
+            throw new JsonParseException(e.getMessage(), e);
+        } catch (ParseException e) {
+            throw new JsonParseException(e.getMessage(), e);
+        }
+    }
+}
+
+
+sGson = new GsonBuilder()
+                    .registerTypeAdapter(Event.EventDateTime.class,
+                            new DateDeserializer<Event.EventDateTime>(
+                                    Event.EventDateTime.DATE_FORMAT, Event.EventDateTime.class))
+                    .registerTypeAdapter(Event.StartEndDateTime.class,
+                            new DateDeserializer<Event.StartEndDateTime>(
+                                    Event.StartEndDateTime.DATE_FORMAT, Event.StartEndDateTime.class))
+                    .registerTypeAdapter(Event.SimpleDate.class,
+                            new DateDeserializer<Event.SimpleDate>(
+                                    Event.SimpleDate.DATE_FORMAT, Event.SimpleDate.class))
+                    .create();
+
+
+public class Event {
+
+    @SerializedName("created")
+    private EventDateTime mCreated;
+
+    //@SerializedName("updated")
+    private EventDateTime mUpdated;
+
+    ...
+
+    @SerializedName("start")
+    private ConditionalDateTime mStart;
+
+    @SerializedName("end")
+    private ConditionalDateTime mEnd;
+
+    public static class ConditionalDateTime {
+        @SerializedName("dateTime")
+        private StartEndDateTime mDateTime;
+
+        @SerializedName("date")
+        private SimpleDate mDate;
+
+        public SimpleDate getDate() {
+            return mDate;
+        }
+
+        public StartEndDateTime getDateTime() {
+            return mDateTime;
+        }
+
+        /**
+         * If it is an all day event then only date is populated (not DateTime)
+         * @return
+         */
+        public boolean isAllDayEvent() {
+            return mDate != null;
+        }
+    }
+
+    public static class EventDateTime extends Date {
+        public static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+    }
+
+    public static class StartEndDateTime extends Date {
+        public static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZZZZZ");
+    }
+
+    public static class SimpleDate extends java.util.Date {
+        public static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
+    }
+}
