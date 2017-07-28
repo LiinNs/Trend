@@ -45,6 +45,9 @@ spring:
         path:
           logs: ./trendLog/elasticsearch/log/
           data: ./data
+    mongodb:
+      host: localhost
+      port: 27017
   # Mail
   #mail:
   #  default-encoding: UTF-8
