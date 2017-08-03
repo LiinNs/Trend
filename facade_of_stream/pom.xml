@@ -137,6 +137,12 @@
             <artifactId>webmagic-extension</artifactId>
             <version>0.6.1</version>
         </dependency>
+        <!--reflections-->
+        <dependency>
+            <groupId>org.reflections</groupId>
+            <artifactId>reflections</artifactId>
+            <version>0.9.10</version>
+        </dependency>
         <!-- Quartz -->
         <dependency>
             <groupId>org.quartz-scheduler</groupId>
