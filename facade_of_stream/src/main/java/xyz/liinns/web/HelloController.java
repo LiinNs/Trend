@@ -15,4 +15,10 @@ public class HelloController {
         return "Greetings from Spring Boot!";
     }
 
+    public static void main(String[] args) {
+        Class<HelloController> aClass = HelloController.class;
+
+        int modifiers = aClass.getModifiers();
+    }
+
 }

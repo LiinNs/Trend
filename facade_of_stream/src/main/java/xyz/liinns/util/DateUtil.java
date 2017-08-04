@@ -22,7 +22,7 @@ public class DateUtil {
      * @param chronoUnit
      * @see ChronoUnit
      * @return 指定单位差值的绝对值
-     * @apiNote http://www.jianshu.com/p/2949db9c3df5
+     * @apiNote http://www.jianshu.com/p/2949db9c3df5 other ways should be Period and Duration
      * @author LiinNs
      */
     public static long calcCountOfTwoDate(Date dateOne, Date dateTwo, ChronoUnit chronoUnit) {
