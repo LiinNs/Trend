@@ -4,21 +4,21 @@ package xyz.liinns.exception.impl;
  * Description:
  * Created by LiinNs on 2017-8-3 0003.
  */
-public abstract class HbException extends RuntimeException {
+public abstract class TrendException extends RuntimeException {
 
-    HbException() {
+    TrendException() {
         super();
     }
 
-    HbException(String message) {
+    TrendException(String message) {
         super(message);
     }
 
-    HbException(String message, Throwable cause) {
+    TrendException(String message, Throwable cause) {
         super(message, cause);
     }
 
-    HbException(Throwable cause) {
+    TrendException(Throwable cause) {
         super(cause);
     }
 
