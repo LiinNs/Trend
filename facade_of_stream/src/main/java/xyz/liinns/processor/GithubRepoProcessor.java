@@ -36,7 +36,7 @@ public class GithubRepoProcessor implements PageProcessor {
     public static void main(String[] args) {
         Spider.create(new GithubRepoProcessor())
                 .addUrl("https://github.com/code4craft")
-                .addPipeline(new JsonFilePipeline("./"))
+                .addPipeline(new JsonFilePipeline("F:/workspace/webmagic"))
                 .thread(5)
                 .run();
     }

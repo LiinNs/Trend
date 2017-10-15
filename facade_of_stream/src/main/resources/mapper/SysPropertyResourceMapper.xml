@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="xyz.liinns.mapper.SysPropertyResourceMapper" >
+  <resultMap id="BaseResultMap" type="xyz.liinns.entity.SysPropertyResource" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="property_name" property="propertyName" jdbcType="VARCHAR" />
+    <result column="property_value" property="propertyValue" jdbcType="VARCHAR" />
+  </resultMap>
+</mapper>

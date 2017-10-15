@@ -43,10 +43,10 @@
         <!--typeHandler="org.apache.ibatis.type.EnumOrdinalTypeHandler"/>-->
         <!--</table>-->
 
-        <table tableName="user">
-            <generatedKey column="id" sqlStatement="MySql" identity="true" />
+        <table tableName="sys_property_resource" />
+            <!--<generatedKey column="id" sqlStatement="MySql" identity="true" />
             <ignoreColumn column="create_time"/>
             <ignoreColumn column="modify_time"/>
-        </table>
+        </table>-->
     </context>
 </generatorConfiguration>
